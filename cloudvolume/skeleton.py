@@ -912,6 +912,8 @@ class Skeleton(object):
     N = 0
 
     for i, line in enumerate(lines):
+      if line.startswith("\"#") or line.startswith("#"):
+        continue
       if line.replace(r"\s", '') == '':
         continue
 
@@ -923,7 +925,7 @@ class Skeleton(object):
 
       vertex_index[coord] = i 
       label_index[vid] = coord
-      parents[i] = parent_id
+      parents[N] = parent_id
 
       vertices.append(coord)
       vertex_types.append(int(vtype))
